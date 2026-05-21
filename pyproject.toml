@@ -1,0 +1,25 @@
+[project]
+name = "conversation-shl-assessment"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-dotenv",
+    "fastapi",
+    "uvicorn[standard]",
+    "httpx",
+    "sentence-transformers",
+    "faiss-cpu",
+    "numpy",
+    "pydantic",
+    "pytest",
+    "pytest-asyncio",
+    "groq>=1.2.0",
+    "httpx",
+    "requests>=2.34.2",
+    "rich>=15.0.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
