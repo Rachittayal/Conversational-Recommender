@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: shl-assessment-agent
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.1-8b-instant
+      - key: EMBEDDING_MODEL
+        value: all-MiniLM-L6-v2
+      - key: REQUEST_TIMEOUT_SECONDS
+        value: "25"
+      - key: MAX_TURNS
+        value: "8"
+      - key: MAX_RECOMMENDATIONS
+        value: "10"
+      - key: TOP_K_RESULTS
+        value: "25"
+      - key: CATALOG_CACHE_PATH
+        value: data/catalog.json
