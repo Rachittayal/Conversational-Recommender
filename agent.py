@@ -295,7 +295,7 @@ class Agent:
 
         return ChatResponse(
             reply=question,
-            recommendations=None,
+            recommendations=[],
             end_of_conversation=False,
         )
 
@@ -306,7 +306,7 @@ class Agent:
                 "I can only help with SHL assessment selection. "
                 "Please ask me about assessments for a specific role or hiring need."
             ),
-            recommendations=None,
+            recommendations=[],
             end_of_conversation=False,
         )
 
@@ -325,7 +325,7 @@ class Agent:
             return self._handle_clarify_templated(messages)
         return ChatResponse(
             reply=question,
-            recommendations=None,
+            recommendations=[],
             end_of_conversation=False,
         )
 
@@ -349,7 +349,7 @@ class Agent:
                     "I could not find those assessments in the catalog. "
                     "Could you clarify the assessment names?"
                 ),
-                recommendations=None,
+                recommendations=[],
                 end_of_conversation=False,
             )
 
@@ -357,7 +357,7 @@ class Agent:
         reply = await self._llm_call(prompt, max_tokens=300)
         return ChatResponse(
             reply=reply.strip(),
-            recommendations=None,
+            recommendations=[],
             end_of_conversation=False,
         )
 
@@ -387,7 +387,7 @@ class Agent:
                     "I could not find matching assessments. "
                     "Could you relax some requirements?"
                 ),
-                recommendations=None,
+                recommendations=[],
                 end_of_conversation=False,
             )
 
@@ -431,7 +431,7 @@ class Agent:
                     "The updated shortlist is empty. "
                     "Could you clarify what you would like to include?"
                 ),
-                recommendations=None,
+                recommendations=[],
                 end_of_conversation=False,
             )
 
