@@ -27,7 +27,7 @@ class Recommendation(BaseModel):
 
 class ChatResponse(BaseModel):
     reply: str
-    recommendations: Optional[list[Recommendation]] = None
+    recommendations: Optional[list[Recommendation]] = []
     end_of_conversation: bool = False
     
 
