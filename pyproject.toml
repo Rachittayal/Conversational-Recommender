@@ -16,10 +16,8 @@ dependencies = [
     "pytest",
     "pytest-asyncio",
     "groq>=1.2.0",
-    "httpx",
     "requests>=2.34.2",
     "rich>=15.0.0",
-    "agent-py>=0.0.24",
 ]
 
 [tool.pytest.ini_options]

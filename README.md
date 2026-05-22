@@ -303,10 +303,3 @@ curl -X POST http://localhost:8000/chat \
   }'
 ```
 
-## License
-
-[Add your license here]
-
-## Contact
-
-[Add contact information here]
