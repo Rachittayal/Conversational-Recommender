@@ -103,16 +103,22 @@ class Agent:
     def _has_minimum_context(self, messages: list) -> bool:
         full_text = " ".join(m.content.lower() for m in messages)
 
-        if len(messages) == 1:
-            first_text = messages[0].content.lower()
-            if self._has_role(first_text) and self._has_seniority(first_text):
-                return True  # Let LLM analyze and decide CLARIFY vs RECOMMEND
-            return False  # Too vague, use templated clarify
-
+        # Check context signals across all messages
         has_role = self._has_role(full_text)
         has_seniority = self._has_seniority(full_text)
         has_use_case = self._has_use_case(full_text)
         has_test_type = self._has_explicit_test_type(full_text)
+
+        # Turn 1 logic: Check if we have enough to proceed to LLM analysis
+        if len(messages) == 1:
+            # Full context: role + seniority + use_case → LLM will RECOMMEND
+            if has_role and has_seniority and has_use_case:
+                return True
+            # Partial context: role + seniority → LLM will decide CLARIFY vs RECOMMEND
+            if has_role and has_seniority:
+                return True
+            # Too vague → use templated clarify (zero LLM cost)
+            return False
 
         if has_role and has_seniority and has_use_case:
             return True
